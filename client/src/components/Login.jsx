@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { v4 as uuidV4 } from "uuid";
 
 const Login = (props) => {
   const { setId } = props;
@@ -7,6 +8,10 @@ const Login = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setId(idRef.current.value);
+  };
+
+  const createNewId = () => {
+    setId(uuidV4());
   };
   return (
     <article className="my-auto mx-4">
@@ -22,7 +27,12 @@ const Login = (props) => {
           <button className="my-2 mr-2 p-2 rounded bg-gray-200 w-20">
             Login
           </button>
-          <button className="my-2 p-2 rounded bg-gray-200 w-20">New Id</button>
+          <button
+            onClick={createNewId}
+            className="my-2 p-2 rounded bg-gray-200 w-20"
+          >
+            New Id
+          </button>
         </section>
       </form>
     </article>

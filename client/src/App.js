@@ -1,15 +1,16 @@
 import "./App.css";
 import io from "socket.io-client";
 import Login from "./components/Login";
-import { useState } from "react";
+import ChatFeeds from "./components/ChatFeeds";
+import useLocalStorage from "./hooks/useLocalStorage";
+
 const socket = io.connect("http://localhost:3001");
 
 function App() {
-  const [id, setId] = useState();
+  const [id, setId] = useLocalStorage("Id");
   return (
     <div className="flex flex-col h-screen">
-      {id}
-      <Login setId={setId} />
+      {id ? <ChatFeeds id={id} /> : <Login setId={setId} />}
     </div>
   );
 }
