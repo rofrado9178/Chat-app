@@ -1,7 +1,7 @@
 import SideBar from "./SideBar";
 const ChatFeeds = (props) => {
   return (
-    <article>
+    <article className="flex h-screen">
       <SideBar />
     </article>
   );
